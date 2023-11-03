@@ -85,16 +85,13 @@ function recorrerListadoYRenderizarTarjetas() {
     console.log(mostrarMaterias)
 
     listado.forEach(lenguaje => {
-        const div = document.createElement("div")
-        div.setAttribute("class", "caja")
-
-        const img = document.createElement("img")
-        img.setAttribute("src", listado.imgUrl)
-        img.setAttribute("alt", listado.lenguajes)
-
-
-        const pBimestre = document.createElement("p")
-        const pLenguajes = document.createElement("p")
+        mostrarMaterias.innerHTML += `
+        <div class=caja >
+            <img src=${lenguaje.imgUrl} alt=${lenguaje.lenguajes}>
+            <p class=lenguajes>${lenguaje.lenguajes}</p>
+            <p class=bimestre>${lenguaje.bimestre}</p>
+        </div>
+`
     })
 }
 
@@ -108,3 +105,10 @@ function alternarColorTema() {
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
 
+window.addEventListener("keydown", (e) => { 
+    let sobreMiBtn = document.getElementById("sobre-mi");
+
+    if (e.key.toLowerCase() === "f") {
+        sobreMiBtn.classList.remove("oculto");
+    }
+});
